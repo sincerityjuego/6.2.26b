@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoVision - Geospatial Intelligence Platform</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+        <div class="nav-left">
+            <input type="text" id="searchInput" class="search-bar" placeholder="Search location...">
+        </div>
+        <div class="nav-center">
+            <h1 class="platform-title">GeoVision</h1>
+        </div>
+        <div class="nav-right">
+            <button id="toggle2D3D" class="mode-toggle">3D Mode</button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-container">
+        <!-- Map Area -->
+        <div class="map-container">
+            <div id="map"></div>
+            
+            <!-- Bottom-left Control Panel -->
+            <div class="control-panel">
+                <div class="control-header">
+                    <span>Risk Indicators</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="enableRiskLayers" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="risk-legend">
+                    <div class="legend-item">
+                        <span class="legend-color red"></span>
+                        <span>Dangerous</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color yellow"></span>
+                        <span>Moderate</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color green"></span>
+                        <span>Safe</span>
+                    </div>
+                </div>
+                
+                <!-- Additional Layer Controls -->
+                <div class="layer-controls">
+                    <button class="layer-btn" id="toggleFaultLines">Fault Lines</button>
+                    <button class="layer-btn" id="toggleFloodZones">Flood Zones</button>
+                    <button class="layer-btn" id="toggleInfrastructure">Infrastructure</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side Panel -->
+        <aside class="side-panel">
+            <!-- Data Visualization Section -->
+            <div class="data-section">
+                <div class="section-header">
+                    <h2>Location Intelligence</h2>
+                    <button class="close-btn" id="closeDataSection">×</button>
+                </div>
+                <div id="locationData" class="location-data">
+                    <p class="placeholder-text">Select a location on the map to view details</p>
+                </div>
+            </div>
+
+            <!-- AI VISION Chat Interface -->
+            <div class="ai-section">
+                <div class="ai-header">
+                    <h3>AI VISION</h3>
+                    <button class="expand-btn" id="expandAI">⛶</button>
+                </div>
+                <div class="ai-chat" id="aiChat">
+                    <div class="ai-message ai-greeting">
+                        <p>Hi, I am AI VISION. What would you like to know?</p>
+                    </div>
+                </div>
+                <div class="ai-input-container">
+                    <input type="text" id="aiInput" class="ai-input" placeholder="Ask about any location...">
+                    <button id="aiSend" class="ai-send-btn">Send</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Full Screen AI Modal -->
+    <div id="aiModal" class="ai-modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>AI VISION</h2>
+                <button class="close-modal" id="closeModal">×</button>
+            </div>
+            <div class="modal-chat" id="modalChat">
+                <div class="ai-message ai-greeting">
+                    <p>Hi, I am AI VISION. What would you like to know?</p>
+                </div>
+            </div>
+            <div class="modal-input-container">
+                <input type="text" id="modalAiInput" class="ai-input" placeholder="Ask about any location...">
+                <button id="modalAiSend" class="ai-send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator hidden">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
